@@ -1,20 +1,20 @@
 import React, { Component } from "react"
 import { View, Image, StatusBar } from "react-native"
+import colors from "../assets/colors"
+import styles from "../assets/styles/splashScreenStyle"
 
-class LoginScreen extends Component {
+class SplashScreen extends Component {
   render() {
     return(
-      <View style={{flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: "#2ecc71"}}>
-        <StatusBar backgroundColor="#54d466" barStyle="light-content" />
+      <View style={styles.container}>
+        <StatusBar backgroundColor={colors.prime} barStyle="light-content" />
         <Image 
-          style={{width: 250, height: 250}}
-          source={{
-            uri: "https://i.pinimg.com/originals/31/c2/7f/31c27f8ba868e2fc1ee26894f4d74f32.jpg"
-          }}
+          style={styles.logo}
+          source={require("../assets/images/logo.png")}
         />
       </View>
     )
   }
 }
 
-export default LoginScreen
+export default SplashScreen

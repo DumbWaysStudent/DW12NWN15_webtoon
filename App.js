@@ -35,7 +35,9 @@ class App extends Component {
 
   // Life cycle function
   componentDidMount() {
-    this.onLoading()
+    if(this.state.isLoading) {
+      this.onLoading()
+    }
   }
 }
 
