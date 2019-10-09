@@ -1,7 +1,5 @@
 import { StyleSheet } from "react-native"
 import colors from "../colors"
-import { red } from "ansi-colors"
-import { Colors } from "react-native/Libraries/NewAppScreen"
 
 const styles = StyleSheet.create({
   container: {
