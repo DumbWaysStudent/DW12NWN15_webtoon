@@ -42,6 +42,14 @@ export default styles = StyleSheet.create({
   caroselItem: {
     position: "relative"
   },
+  carouselImgFilter: {
+    position: "absolute", 
+    width: "100%", 
+    height: "100%", 
+    backgroundColor: "#00000022", 
+    alignItems: "center", 
+    justifyContent: "flex-end"
+  },
   caroselTitle: {
     color: colors.white,
     fontFamily: fonts.raleway.semiBold,
@@ -71,6 +79,7 @@ export default styles = StyleSheet.create({
   favContent: {
     height: 210,
     paddingHorizontal: 0,
+    paddingVertical: 10,
     marginHorizontal: 0
   },
   favList: {
@@ -78,16 +87,26 @@ export default styles = StyleSheet.create({
     marginRight: 15,
     paddingBottom: 5,
     borderRadius: 4,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.18,
+    shadowRadius: 1.00,
+
+    elevation: 1,
   },
   favImg: {
     height: 150,
     width: 125,
-    borderRadius: 4
+    borderTopLeftRadius: 4,
+    borderTopRightRadius: 4
   },
   favTitle: {
     fontSize: 16,
     fontFamily: fonts.raleway.normal,
-    marginTop: 15,
+    marginTop: 10,
     color: colors.black
   },
 

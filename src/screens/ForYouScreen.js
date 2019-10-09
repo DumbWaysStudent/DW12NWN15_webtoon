@@ -29,7 +29,7 @@ const data = {
       title: "Goblin Slayer",
       image: "https://images-na.ssl-images-amazon.com/images/S/cmx-images-prod/Item/575114/575114._SX360_QL80_TTD_.jpg"
     }, {
-      title: "Uchi no musume",
+      title: "Uchi no...",
       image: "https://66.media.tumblr.com/9475e2b20e08f8d7acc60bc67e4d8744/tumblr_ox7n8f1fM21r60zuio1_540.png"
     }
   ],
@@ -55,7 +55,7 @@ class ForYouScreen extends Component {
   renderBanner = (item) => (
     <View key={item.id} style={styles.caroselItem}>
       <Image style={{ height: bannerHeight }} source={{uri: item.image}} />
-      <View style={{position: "absolute", width: "100%", height: "100%", backgroundColor: "#00000022", alignItems: "center", justifyContent: "flex-end"}}>
+      <View style={styles.carouselImgFilter}>
         <Text style={styles.caroselTitle}>{item.title}</Text>
       </View>
     </View>
@@ -81,7 +81,6 @@ class ForYouScreen extends Component {
             loop
             index={0}
             pageSize={bannerWidth}
-            
           >
             {data.banners.map((item, index) => this.renderBanner(item, index))}
           </Carousel>
