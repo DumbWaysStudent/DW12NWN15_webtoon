@@ -1,6 +1,6 @@
 export default {
-  prime: "#2ecc71",
-  primeDarken: "#27ae60",
+  prime: "#30336b",
+  primeDarken: "#130f40",
   error: "#e74c3c",
   
   white: "#ffffff",
