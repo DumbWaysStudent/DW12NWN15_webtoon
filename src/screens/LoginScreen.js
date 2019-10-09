@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { View, Text, Image, TextInput, TouchableOpacity, StatusBar } from "react-native"
+import { ActivityIndicator, View, Text, Image, TextInput, TouchableOpacity, StatusBar } from "react-native"
 import Fa from "react-native-vector-icons/FontAwesome5"
 import colors from "../assets/colors"
 import styles from "../assets/styles/loginScreenStyle"
@@ -23,7 +23,8 @@ class LoginScreen extends Component {
         err: ""
       },
       showPassword: false,
-      btnDisabled: true
+      btnDisabled: true,
+      isLoading: false
     }
   }
   
@@ -87,13 +88,21 @@ class LoginScreen extends Component {
             </View>
           </View>
 
-          <TouchableOpacity 
-            style={[styles.loginBtn, this.state.btnDisabled  && (styles.loginBtnDisabled)]} 
-            onPress={this._handleLogin} 
-            disabled={this.state.btnDisabled}
-          >
-            <Text style={styles.loginBtnText}>Log In</Text>
-          </TouchableOpacity>
+          {this.state.isLoading ? (
+            <ActivityIndicator
+              size={32}
+              color={colors.prime}
+              />
+          ) : (
+            <TouchableOpacity 
+              style={[styles.loginBtn, this.state.btnDisabled  && (styles.loginBtnDisabled)]} 
+              onPress={this._handleLogin} 
+              disabled={this.state.btnDisabled}
+            >
+              <Text style={styles.loginBtnText}>Log In</Text>
+            </TouchableOpacity>
+          )}
+
         </View>
       </View>
     )
@@ -102,29 +111,35 @@ class LoginScreen extends Component {
 
   _handleLogin = () => {
     const { iMail, iPass, data } = this.state
-    if(this._isValidate()) {
-      if((iMail == data.mail) && (iPass == data.pass)) {
-        alert("mantab")
+    this.setState({isLoading: true})
+    
+    setTimeout(() => {
+      if(this._isValidate()) {
+        if((iMail == data.mail) && (iPass == data.pass)) {
+          alert("mantab")
+        }
+  
+        if(iMail !== data.mail) {
+          this.setState({
+            isEmail: {
+              status: true,
+              err: "Wrong e-mail"
+            }
+          })
+        }
+  
+        if(iPass !== data.pass) {
+          this.setState({
+            isPass: {
+              status: true,
+              err: "Wrong password"
+            }
+          })
+        }
+        this.setState({isLoading: false})
       }
-
-      if(iMail !== data.mail) {
-        this.setState({
-          isEmail: {
-            status: true,
-            err: "Wrong e-mail"
-          }
-        })
-      }
-
-      if(iPass !== data.pass) {
-        this.setState({
-          isPass: {
-            status: true,
-            err: "Wrong password"
-          }
-        })
-      }
-    }
+      
+    }, 1500)
   }
 
   _showPassword = () => {
