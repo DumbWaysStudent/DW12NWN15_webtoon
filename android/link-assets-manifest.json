@@ -1,0 +1,29 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/Quicksand/Quicksand-Bold.ttf",
+      "sha1": "6d69bd5ae0c78661ca4eed9d7188872719312902"
+    },
+    {
+      "path": "src/assets/fonts/Quicksand/Quicksand-Medium.ttf",
+      "sha1": "b59c5c150968007e8bef29fba6dd57372fdfbcf3"
+    },
+    {
+      "path": "src/assets/fonts/Quicksand/Quicksand-Regular.ttf",
+      "sha1": "cdc2aeb5b7ce2fdf2f5c9dbaede08600ed6a31c9"
+    },
+    {
+      "path": "src/assets/fonts/Raleway/Raleway-Bold.ttf",
+      "sha1": "6860363db5ea3dc384addbc4ff5d0aaee17b91eb"
+    },
+    {
+      "path": "src/assets/fonts/Raleway/Raleway-SemiBold.ttf",
+      "sha1": "d9eeb3f776f8ad1ae98361df8f377b4809d4ae52"
+    },
+    {
+      "path": "src/assets/fonts/Raleway/raleway.ttf",
+      "sha1": "1e8694a5ea1ff0e0f8800e5c23470c5132ec9123"
+    }
+  ]
+}
