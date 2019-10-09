@@ -167,8 +167,16 @@ class LoginScreen extends Component {
           status: false,
           err: ""
         },
-        btnDisabled: false
       })
+      if(this.state.isPass.status) {
+        this.setState({
+          btnDisabled: true
+        })
+      } else {
+        this.setState({
+          btnDisabled: false
+        })
+      }
     }
   }
 
@@ -189,6 +197,15 @@ class LoginScreen extends Component {
           err: ""
         }
       })
+      if(this.state.isEmail.status) {
+        this.setState({
+          btnDisabled: true
+        })
+      } else {
+        this.setState({
+          btnDisabled: false
+        })
+      }
     }
   }
 }
