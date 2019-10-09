@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { View, Text, Image, TextInput, TouchableOpacity, StatusBar } from "react-native"
+import { ActivityIndicator, View, Text, Image, TextInput, TouchableOpacity, StatusBar } from "react-native"
 import Fa from "react-native-vector-icons/FontAwesome5"
 import colors from "../assets/colors"
 import styles from "../assets/styles/loginScreenStyle"
@@ -23,12 +23,13 @@ class LoginScreen extends Component {
         err: ""
       },
       showPassword: false,
-      btnDisabled: true
+      btnDisabled: true,
+      isLoading: false
     }
   }
   
   render() {
-    const { isEmail, isPass, showPassword } = this.state
+    const { isEmail, isPass, showPassword, isLoading } = this.state
     return(
       <View style={styles.container}>
         <StatusBar backgroundColor={colors.prime} barStyle="light-content" />
@@ -82,18 +83,25 @@ class LoginScreen extends Component {
               { 
                 isPass.status && (
                   <Text style={styles.errText}>{isPass.err}</Text>
-                ) 
-              }
+                  ) 
+                }
             </View>
           </View>
 
-          <TouchableOpacity 
-            style={[styles.loginBtn, this.state.btnDisabled  && (styles.loginBtnDisabled)]} 
-            onPress={this._handleLogin} 
-            disabled={this.state.btnDisabled}
-          >
-            <Text style={styles.loginBtnText}>Log In</Text>
-          </TouchableOpacity>
+          {isLoading ? (
+            <ActivityIndicator
+              size={32}
+              color={colors.prime}
+            />
+          ) : (
+            <TouchableOpacity 
+              style={[styles.loginBtn, this.state.btnDisabled  && (styles.loginBtnDisabled)]} 
+              onPress={this._handleLogin} 
+              disabled={this.state.btnDisabled}
+            >
+              <Text style={styles.loginBtnText}>Log In</Text>
+            </TouchableOpacity>
+          )}
         </View>
       </View>
     )
@@ -101,30 +109,35 @@ class LoginScreen extends Component {
   }
 
   _handleLogin = () => {
-    const { iMail, iPass, data } = this.state
-    if(this._isValidate()) {
-      if((iMail == data.mail) && (iPass == data.pass)) {
-        alert("mantab")
-      }
+    const { iMail, iPass, data, isLoading } = this.state
+    this.setState({isLoading: true})
 
-      if(iMail !== data.mail) {
-        this.setState({
-          isEmail: {
-            status: true,
-            err: "Wrong e-mail"
-          }
-        })
+    setTimeout(() => {
+      if(this._isValidate()) {
+        if((iMail == data.mail) && (iPass == data.pass)) {
+          alert("mantab")
+        }
+  
+        if(iMail !== data.mail) {
+          this.setState({
+            isEmail: {
+              status: true,
+              err: "Wrong e-mail"
+            }
+          })
+        }
+  
+        if(iPass !== data.pass) {
+          this.setState({
+            isPass: {
+              status: true,
+              err: "Wrong password"
+            }
+          })
+        }
       }
-
-      if(iPass !== data.pass) {
-        this.setState({
-          isPass: {
-            status: true,
-            err: "Wrong password"
-          }
-        })
-      }
-    }
+      this.setState({isLoading: false})
+    }, 1500)
   }
 
   _showPassword = () => {
