@@ -3,7 +3,7 @@ import { createAppContainer, createSwitchNavigator } from "react-navigation"
 import { createStackNavigator } from "react-navigation-stack"
 import { createBottomTabNavigator } from "react-navigation-tabs"
 
-import Fa from "react-native-vector-icons/FontAwesome5"
+import Fa from "react-native-vector-icons/FontAwesome"
 import colors from "../assets/colors"
 import fonts from "../assets/fonts"
 
@@ -11,6 +11,7 @@ import LoginScreen from "../screens/LoginScreen"
 import ForYouScreen from "../screens/ForYouScreen"
 import FavouriteScreen from "../screens/FavouriteScreen"
 import ProfileScreen from "../screens/ProfileScreen"
+import DetailScreen from "../screens/DetailScreen"
 
 const AuthStack = createStackNavigator({
   Login: { screen: LoginScreen, navigationOptions: { header: null } }
@@ -30,9 +31,9 @@ const AppStack = createBottomTabNavigator(
         if (routeName === "ForYou") {
           iconName = "th-large"
         } else if (routeName === "Favourite") {
-          iconName = "star"
+          iconName = "heart"
         } else if (routeName === "Profile") {
-          iconName = "user-alt"
+          iconName = "user"
         }
 
         return <Fa name={iconName} size={25} color={tintColor} />
@@ -64,14 +65,40 @@ const AppStack = createBottomTabNavigator(
   }
 )
 
+const ContentStack = createStackNavigator(
+  {
+    ForYou: {screen: AppStack, navigationOptions: {header: null}},
+    Detail: {screen: DetailScreen},
+  },
+  {
+    initialRouteName: "ForYou",
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: colors.prime
+      },
+      headerRightContainerStyle: {
+        paddingRight: 20
+      },
+      headerTitleStyle: {
+        color: colors.white,
+        fontFamily: fonts.quicksand.semiBold,
+        textTransform: "uppercase",
+        alignSelf: "center",
+        justifyContent: "center"
+      },
+      headerTintColor: colors.white,
+    }
+  }
+)
+
 export default createAppContainer(
   createSwitchNavigator(
     {
-      App: AppStack,
-      Auth: AuthStack
+      Auth: AuthStack,
+      Content: ContentStack
     },
     {
-      initialRouteName: "App"
+      initialRouteName: "Content"
     }
   )
 )
