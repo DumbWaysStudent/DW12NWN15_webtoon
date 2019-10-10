@@ -71,7 +71,7 @@ export default createAppContainer(
       Auth: AuthStack
     },
     {
-      initialRouteName: "App"
+      initialRouteName: "Auth"
     }
   )
 )
