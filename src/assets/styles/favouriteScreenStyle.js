@@ -2,24 +2,37 @@ import { StyleSheet } from "react-native"
 import colors from "../colors"
 import fonts from "../fonts"
 
-const styles = StyleSheet.create({
+export default styles = StyleSheet.create({
   container: {
     flex: 1
   },
-  bannerBox: {
-    width: "100%",
-    overflow: "hidden",
-    borderBottomColor: colors.prime,
-    shadowColor: "#000",
+  header: {
+    minHeight: 50,
+    backgroundColor: colors.prime,
+    paddingVertical: 15,
+    paddingHorizontal: 10,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
-      height: 3,
+      height: 1,
     },
-    shadowOpacity: 0.29,
-    shadowRadius: 4.65,
+    shadowOpacity: 0.20,
+    shadowRadius: 1.41,
 
-    elevation: 7,
+    elevation: 2,
+  },
+  searchBox: {
+    backgroundColor: colors.white,
+    borderRadius: 4,
+    flexDirection: "row",
+    alignItems: "center",
+    paddingRight: 20,
+  },
+  searchInput: {
+    flex: 1,
+    fontFamily: fonts.quicksand.normal,
+    fontSize: 16,
+    paddingHorizontal: 20
   },
 
   listContainer: {
@@ -55,14 +68,12 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     justifyContent: "space-evenly"
   },
-  chapText: {
+  favTitle: {
     fontFamily: fonts.quicksand.semiBold,
     fontSize: 18
   },
-  chapDate: {
+  favCount: {
     color: colors.gray,
     fontSize: 14
   }
 })
-
-export default styles

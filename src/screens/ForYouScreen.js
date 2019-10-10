@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import Carousel from "react-native-banner-carousel"
-import { ScrollView, Image, View, Text, TouchableOpacity, TextInput, Dimensions, StatusBar } from "react-native"
+import { ScrollView, Image, View, Text, TouchableOpacity, TouchableWithoutFeedback, TextInput, Dimensions, StatusBar } from "react-native"
 import Fa from "react-native-vector-icons/FontAwesome5"
 import colors from "../assets/colors"
 import styles from "../assets/styles/forYouScreeStyle"
@@ -12,12 +12,15 @@ const data = {
   banners : [
     {
       title: "Overlord",
+      banner: "https://images3.alphacoders.com/667/667877.jpg",
       image: "https://cdn.animeuknews.net/app/uploads/2019/02/1_4.jpg"
     }, {
       title: "Goblin Slayer",
+      banner: "https://boundingintocomics.com/files/2019/09/2019.09.09-03.50-boundingintocomics-5d7674c2cdd18.png",
       image: "https://boundingintocomics.com/files/2019/09/2019.09.09-03.50-boundingintocomics-5d7674c2cdd18.png"
     }, {
-      title: "Uchi no musume",
+      title: "Uchi no Ko",
+      banner: "https://animekaizoku.com/wp-content/uploads/2019/07/19042310403576.jpg.webp",
       image: "https://animekaizoku.com/wp-content/uploads/2019/07/19042310403576.jpg.webp"
     }
   ],
@@ -56,12 +59,14 @@ class ForYouScreen extends Component {
   }
 
   renderBanner = (item) => (
-    <View key={item.id} style={styles.caroselItem}>
-      <Image style={{ height: bannerHeight }} source={{uri: item.image}} />
-      <View style={styles.carouselImgFilter}>
-        <Text style={styles.caroselTitle}>{item.title}</Text>
+    <TouchableWithoutFeedback onPress={() => this.props.navigation.push("Detail", {title: item.title, img: item.banner})}>
+      <View key={item.id} style={styles.caroselItem}>
+          <Image style={{ height: bannerHeight }} source={{uri: item.image}} />
+          <View style={styles.carouselImgFilter}>
+            <Text style={styles.caroselTitle}>{item.title}</Text>
+          </View>
       </View>
-    </View>
+    </TouchableWithoutFeedback>
   )
 
   render() {
