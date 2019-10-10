@@ -18,11 +18,36 @@ const AuthStack = createStackNavigator({
   Login: { screen: LoginScreen, navigationOptions: { header: null } }
 })
 
+const AdminStack = createStackNavigator(
+  {
+  Profile: {screen: ProfileScreen, navigationOptions: {title: "Profile"}}
+  },
+  {
+    initialRouteName: "Profile",
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: colors.prime
+      },
+      headerRightContainerStyle: {
+        paddingRight: 20
+      },
+      headerTitleStyle: {
+        color: colors.white,
+        fontFamily: fonts.quicksand.semiBold,
+        textTransform: "uppercase",
+        alignSelf: "center",
+        justifyContent: "center"
+      },
+      headerTintColor: colors.white,
+    }
+  }
+)
+
 const AppStack = createBottomTabNavigator(
   {
     ForYou: {screen: ForYouScreen, navigationOptions: {title: "For You"}},
     Favourite: {screen: FavouriteScreen, navigationOptions: {title: "Favourite"}},
-    Profile: {screen: ProfileScreen, navigationOptions: {title: "My Profile"}}
+    Profile: {screen: AdminStack, navigationOptions: {title: "My Profile"}}
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -69,7 +94,8 @@ const ContentStack = createStackNavigator(
   {
     ForYou: {screen: AppStack, navigationOptions: {header: null}},
     Detail: {screen: DetailScreen},
-    Chapter: {screen: ChapterScreen}
+    Chapter: {screen: ChapterScreen},
+    Profile: {screen: AppStack, navigationOptions: {title: "Profile"}}
   },
   {
     initialRouteName: "ForYou",
