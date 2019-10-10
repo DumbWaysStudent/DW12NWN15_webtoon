@@ -1,9 +1,10 @@
 import React, { Component } from "react"
 
+// Navigator
+import AppNavigator from "./src/routes/AppNavigator";
+
 // Imported screen
 import SplashScreen from "./src/screens/SplashScreen"
-import LoginScreen from "./src/screens/LoginScreen"
-import ForYouScreen from "./src/screens/ForYouScreen"
 
 class App extends Component {
   constructor() {
@@ -24,7 +25,7 @@ class App extends Component {
     }
     
     return(
-      <ForYouScreen />
+      <AppNavigator />
     )
   }
 

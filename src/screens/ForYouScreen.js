@@ -121,7 +121,7 @@ class ForYouScreen extends Component {
           
 
         </ScrollView>
-        <View style={styles.navigationBox}>
+        {/* <View style={styles.navigationBox}>
           <TouchableOpacity style={styles.navBtn}>
             <Fa name="th-large" size={28} color={colors.white} />
             <Text style={styles.navText}>For You</Text>
@@ -134,7 +134,7 @@ class ForYouScreen extends Component {
             <Fa name="user-alt" size={28} color={colors.white} />
             <Text style={styles.navText}>Profile</Text>
           </TouchableOpacity>
-        </View>
+        </View> */}
       </View>
     )
   }
