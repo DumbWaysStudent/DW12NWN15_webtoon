@@ -24,12 +24,15 @@ const data = {
   fav: [
     {
       title: "Overlord",
+      banner: "https://images3.alphacoders.com/667/667877.jpg",
       image: "https://i.pinimg.com/564x/35/a2/0f/35a20f33f23cf8d00f45e935c176491b.jpg"
     }, {
       title: "Goblin Slayer",
+      banner: "https://boundingintocomics.com/files/2019/09/2019.09.09-03.50-boundingintocomics-5d7674c2cdd18.png",
       image: "https://images-na.ssl-images-amazon.com/images/S/cmx-images-prod/Item/575114/575114._SX360_QL80_TTD_.jpg"
     }, {
-      title: "Uchi no...",
+      title: "Uchi no ko",
+      banner: "https://animekaizoku.com/wp-content/uploads/2019/07/19042310403576.jpg.webp",
       image: "https://66.media.tumblr.com/9475e2b20e08f8d7acc60bc67e4d8744/tumblr_ox7n8f1fM21r60zuio1_540.png"
     }
   ],
@@ -92,12 +95,14 @@ class ForYouScreen extends Component {
               contentContainerStyle={styles.favContent}
             >
               {data.fav.map((item, index) => (
-                <View key={index} style={styles.favList}>
-                  <Image style={styles.favImg} source={{uri: item.image}} />
-                  <View style={{paddingHorizontal: 5}}>
-                    <Text style={styles.favTitle}>{item.title}</Text>
+                <TouchableOpacity key={index} onPress={() => this.props.navigation.navigate("Detail", {img: item.banner, title: item.title})} >
+                  <View style={styles.favList}>
+                    <Image style={styles.favImg} source={{uri: item.image}} />
+                    <View style={{paddingHorizontal: 5}}>
+                      <Text style={styles.favTitle}>{item.title}</Text>
+                    </View>
                   </View>
-                </View>
+                </TouchableOpacity>
               ))}
             </ScrollView>
           </View>
