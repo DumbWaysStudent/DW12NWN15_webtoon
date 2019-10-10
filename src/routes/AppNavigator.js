@@ -12,6 +12,7 @@ import ForYouScreen from "../screens/ForYouScreen"
 import FavouriteScreen from "../screens/FavouriteScreen"
 import ProfileScreen from "../screens/ProfileScreen"
 import DetailScreen from "../screens/DetailScreen"
+import ChapterScreen from "../screens/ChapterScreen"
 
 const AuthStack = createStackNavigator({
   Login: { screen: LoginScreen, navigationOptions: { header: null } }
@@ -27,7 +28,6 @@ const AppStack = createBottomTabNavigator(
     defaultNavigationOptions: ({ navigation }) => ({
       tabBarIcon: ({ focused, horizontal, tintColor }) => {
         const { routeName } = navigation.state
-        let IconComponent = Fa
         if (routeName === "ForYou") {
           iconName = "th-large"
         } else if (routeName === "Favourite") {
@@ -69,6 +69,7 @@ const ContentStack = createStackNavigator(
   {
     ForYou: {screen: AppStack, navigationOptions: {header: null}},
     Detail: {screen: DetailScreen},
+    Chapter: {screen: ChapterScreen}
   },
   {
     initialRouteName: "ForYou",

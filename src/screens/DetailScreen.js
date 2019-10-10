@@ -1,11 +1,10 @@
 import React, { Component } from "react"
-import { View, Image, Text, TouchableOpacity, Dimensions, Share } from "react-native"
+import { View, Image, Text, TouchableOpacity, TouchableWithoutFeedback, Dimensions, Share } from "react-native"
 import { FlatList } from "react-native-gesture-handler"
 import Fa from "react-native-vector-icons/FontAwesome5"
 
 import styles from "../assets/styles/detailScreenStyle"
 import colors from "../assets/colors"
-import fonts from "../assets/fonts"
 
 const width = Dimensions.get("window").width
 
@@ -51,18 +50,20 @@ class DetailScreen extends Component {
   })
 
   renderChapter = ({itm}) => (
-    <View key={itm.id} style={styles.listChapter}>
-      <View style={styles.coverFrame}>
-        <Image 
-          source={{uri: itm.item.cover}} 
-          style={styles.listCover}
-        />
+    <TouchableWithoutFeedback onPress={() => this.props.navigation.push("Chapter", {chapter: itm.item.chapter})}>
+      <View key={itm.id} style={styles.listChapter}>
+        <View style={styles.coverFrame}>
+          <Image 
+            source={{uri: itm.item.cover}} 
+            style={styles.listCover}
+          />
+        </View>
+        <View style={styles.descBox}>
+          <Text style={styles.chapText}>Chapter {itm.item.chapter}</Text>
+          <Text style={styles.chapDate}>{itm.item.date}</Text>
+        </View>
       </View>
-      <View style={styles.descBox}>
-        <Text style={styles.chapText}>Chapter {itm.item.chapter}</Text>
-        <Text style={styles.chapDate}>{itm.item.date}</Text>
-      </View>
-    </View>
+    </TouchableWithoutFeedback>
   )
   
   render() {
