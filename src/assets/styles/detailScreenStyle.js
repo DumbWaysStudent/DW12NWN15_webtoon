@@ -24,7 +24,8 @@ const styles = StyleSheet.create({
 
   listContainer: {
     paddingHorizontal: 25,
-    paddingVertical: 25
+    paddingVertical: 25,
+    flexDirection: "column-reverse"
   },
   listChapter: {
     flexDirection: "row",
