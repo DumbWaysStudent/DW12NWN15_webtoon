@@ -8,7 +8,7 @@ export default styles = StyleSheet.create({
   },
   scrollContainer: {
     minHeight: "100%",
-    paddingBottom: 90
+    paddingBottom: 20
   },
   header: {
     minHeight: 50,
@@ -148,24 +148,4 @@ export default styles = StyleSheet.create({
     color: colors.white,
     marginLeft: 10
   },
-
-  navigationBox: {
-    position: "absolute",
-    bottom: 0,
-    minHeight: 50,
-    paddingHorizontal: 20,
-    paddingTop: 15,
-    paddingBottom: 10,
-    justifyContent: "space-around",
-    flexDirection: "row",
-    width: "100%",
-    backgroundColor: colors.primeDarken
-  },
-  navBtn: {
-    alignItems: "center",
-  },
-  navText: {
-    fontFamily: fonts.quicksand.normal,
-    color: colors.white
-  }
 })
