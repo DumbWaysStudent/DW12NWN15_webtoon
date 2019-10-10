@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   },
   coverFrame: {
     borderWidth: 3,
-    borderColor: colors.black,
+    borderColor: colors.gray,
     borderRadius: 10,
     overflow: "hidden",
     shadowColor: "#000",
