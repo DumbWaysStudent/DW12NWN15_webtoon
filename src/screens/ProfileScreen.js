@@ -24,7 +24,7 @@ class ProfileScreen extends Component {
         </View>
 
         <View style={styles.actionBars}>
-          <TouchableOpacity style={[styles.actionPanel, {borderBottomWidth: 0}]}>
+          <TouchableOpacity style={[styles.actionPanel, {borderBottomWidth: 0}]} onPress={() => this.props.navigation.navigate("MyWeebtoon")}>
             <View style={styles.actionBtn}>
               <Text style={styles.actionText}>My Webtoon Creation</Text>
               <Fa name="chevron-right" size={22} />
