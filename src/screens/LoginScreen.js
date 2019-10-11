@@ -115,7 +115,7 @@ class LoginScreen extends Component {
     setTimeout(() => {
       if(this._isValidate()) {
         if((iMail == data.mail) && (iPass == data.pass)) {
-          this.props.navigation.navigate("App")
+          this.props.navigation.navigate("Content")
         }
   
         if(iMail !== data.mail) {
