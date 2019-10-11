@@ -39,8 +39,8 @@ class CreateChapterScreen extends Component {
       </View>
       <View style={styles.descBox}>
         <Text style={styles.chapTitle}>{itm.item.fileName}</Text>
-        <TouchableOpacity style={styles.delBtn}>
-          <Text style={styles.delBtnText}>Delete</Text>
+        <TouchableOpacity style={styles.delBtnSm}>
+          <Text style={styles.delBtnTextSm}>Delete</Text>
         </TouchableOpacity>
       </View>
     </View>

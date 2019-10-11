@@ -37,7 +37,7 @@ class CreateWeebtoonScreen extends Component {
   })
   
   renderFav = ({itm}) => (
-    <TouchableWithoutFeedback onPress={() => alert("oke")}>
+    <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("EditChapter")}>
       <View key={itm.id} style={styles.listChapter}>
         <View style={styles.coverFrame}>
           <Image 
@@ -80,7 +80,7 @@ class CreateWeebtoonScreen extends Component {
           
           <TouchableOpacity style={styles.addBtn} onPress={() => this.props.navigation.navigate("CreateChapter")}>
             <Fa name="plus" size={18} color={colors.white} />
-            <Text style={styles.btnText}>Add Episode</Text>
+            <Text style={styles.btnText}>Add Chapter</Text>
           </TouchableOpacity>
         </ScrollView>
       </View>

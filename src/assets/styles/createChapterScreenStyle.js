@@ -91,6 +91,44 @@ export default styles = StyleSheet.create({
     shadowRadius: 1.41,
     elevation: 2,
   },
+  addBtn: {
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "row",
+    backgroundColor: colors.primeDarken,
+    width: "100%",
+    paddingVertical: 5,
+    marginVertical: 10,
+    borderRadius: 4,
+    shadowColor: "#000",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.20,
+    shadowRadius: 1.41,
+    elevation: 2,
+  },
+  delBtn: {
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "row",
+    backgroundColor: colors.error,
+    width: "100%",
+    paddingVertical: 5,
+    marginVertical: 10,
+    borderRadius: 4,
+    shadowColor: "#000",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.20,
+    shadowRadius: 1.41,
+    elevation: 2,
+  },
   btnText: { 
     marginLeft: 10,
     fontSize: 18,
@@ -98,7 +136,7 @@ export default styles = StyleSheet.create({
     color: colors.white,
     marginVertical: 10,
   },
-  delBtn: {
+  delBtnSm: {
     backgroundColor: colors.error,
     paddingVertical: 5,
     borderRadius: 4,
@@ -115,7 +153,7 @@ export default styles = StyleSheet.create({
     shadowRadius: 1.41,
     elevation: 2,
   },
-  delBtnText: {
+  delBtnTextSm: {
     color: colors.white,
     fontSize: 16
   }
