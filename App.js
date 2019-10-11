@@ -40,6 +40,7 @@ class App extends Component {
     if(this.state.isLoading) {
       this.onLoading()
     }
+    console.disableYellowBox = true
   }
 }
 
