@@ -13,6 +13,7 @@ import FavouriteScreen from "../screens/FavouriteScreen"
 import ProfileScreen from "../screens/ProfileScreen"
 import DetailScreen from "../screens/DetailScreen"
 import ChapterScreen from "../screens/ChapterScreen"
+import EditProfileScreen from "../screens/EditProfileScreen"
 
 const AuthStack = createStackNavigator({
   Login: { screen: LoginScreen, navigationOptions: { header: null } }
@@ -20,7 +21,8 @@ const AuthStack = createStackNavigator({
 
 const AdminStack = createStackNavigator(
   {
-  Profile: {screen: ProfileScreen, navigationOptions: {title: "Profile"}}
+  Profile: {screen: ProfileScreen, navigationOptions: {title: "Profile"}},
+  EditProfile: {screen: EditProfileScreen, navigationOptions: {title: "Edit Profile"}}
   },
   {
     initialRouteName: "Profile",

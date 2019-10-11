@@ -1,15 +1,23 @@
 import { StyleSheet } from "react-native"
-import colors from "../colors";
-import fonts from "../fonts";
+import colors from "../colors"
+import fonts from "../fonts"
 
 export default styles = StyleSheet.create({
   container: {
     flex: 1,
-
+  },
+  containerEdit: {
+    flex: 1,
+    paddingHorizontal: 10
   },
   profileTop: {
     flex: 1,
     justifyContent: "center",
+    alignItems: "center"
+  },
+  profileTopEdit: {
+    marginTop: 10,
+    paddingVertical: 25,
     alignItems: "center"
   },
   imgFrame: {
@@ -24,6 +32,11 @@ export default styles = StyleSheet.create({
     height: 150,
     width: 150
   },
+  editBtn: {
+    position: "absolute",
+    bottom: 0,
+    right: 5
+  },
   nameTitle: {
     fontSize: 22,
     marginVertical: 10,
@@ -34,6 +47,7 @@ export default styles = StyleSheet.create({
   actionBars: {
     flex: 1,
     justifyContent: "flex-start",
+    alignItems: "center",
   },
   actionPanel: {
     width: "100%",
@@ -49,6 +63,16 @@ export default styles = StyleSheet.create({
   },
   actionText: {
     fontSize: 18,
+    fontFamily: fonts.raleway.normal,
+  },
+  boxInput: {
+    borderWidth: 2,
+    borderColor: colors.gray,
+    minWidth: "100%"
+  },
+  inputName: {
+    fontSize: 18,
+    paddingHorizontal: 10,
     fontFamily: fonts.raleway.normal,
   }
 })

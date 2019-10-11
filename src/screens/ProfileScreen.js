@@ -5,9 +5,9 @@ import styles from "../assets/styles/profileScreenStyles"
 import colors from "../assets/colors"
 
 class ProfileScreen extends Component {
-  static navigationOptions = () => ({
+  static navigationOptions = ({navigation}) => ({
     headerRight: (
-      <TouchableOpacity >
+      <TouchableOpacity onPress={() => navigation.navigate("EditProfile")}>
         <Fa name="pencil-alt" size={18} color={colors.white} />
       </TouchableOpacity>
     )
