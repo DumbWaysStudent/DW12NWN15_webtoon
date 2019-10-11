@@ -1,32 +1,25 @@
 import React, { Component } from "react"
 import { View, TextInput, TouchableWithoutFeedback, Image, Text, FlatList, TouchableOpacity } from "react-native"
 import Fa from "react-native-vector-icons/FontAwesome5"
+import ImagePicker from "react-native-image-picker"
 
 import colors from "../assets/colors"
-import styles from "../assets/styles/createWeebtoonScreenStyle"
+import styles from "../assets/styles/createChapterScreenStyle"
 import { ScrollView } from "react-native-gesture-handler"
 
 const data = [
     {
-      id: "EP01",
-      chapter: "1",
+      id: "IMG01",
+      fileName: "cover.png",
       chapImg: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/d9b1f8f1-a3ec-432d-8e5e-91793bd37cc4/dakrfjg-90b93f1b-3e5e-4763-9e7e-f7b3bb63a397.jpg/v1/fill/w_911,h_878,q_70,strp/goblin_slayer_avatar_2_by_shadowskyexe_dakrfjg-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9OTg3IiwicGF0aCI6IlwvZlwvZDliMWY4ZjEtYTNlYy00MzJkLThlNWUtOTE3OTNiZDM3Y2M0XC9kYWtyZmpnLTkwYjkzZjFiLTNlNWUtNDc2My05ZTdlLWY3YjNiYjYzYTM5Ny5qcGciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.BoC8klMcCPHqaZatT7mVnvykidrNKnxwvUSG80nsrp4",
-      date: "17 Jan 2018"
     }, {
-      id: "EP02",
-      chapter: "2",
+      id: "IMG02",
+      fileName: "intro.png",
       chapImg: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/d9b1f8f1-a3ec-432d-8e5e-91793bd37cc4/dakrfjg-90b93f1b-3e5e-4763-9e7e-f7b3bb63a397.jpg/v1/fill/w_911,h_878,q_70,strp/goblin_slayer_avatar_2_by_shadowskyexe_dakrfjg-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9OTg3IiwicGF0aCI6IlwvZlwvZDliMWY4ZjEtYTNlYy00MzJkLThlNWUtOTE3OTNiZDM3Y2M0XC9kYWtyZmpnLTkwYjkzZjFiLTNlNWUtNDc2My05ZTdlLWY3YjNiYjYzYTM5Ny5qcGciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.BoC8klMcCPHqaZatT7mVnvykidrNKnxwvUSG80nsrp4",
-      date: "25 Feb 2018"
-    }, {
-      id: "EP03",
-      chapter: "3",
-      chapImg: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/d9b1f8f1-a3ec-432d-8e5e-91793bd37cc4/dakrfjg-90b93f1b-3e5e-4763-9e7e-f7b3bb63a397.jpg/v1/fill/w_911,h_878,q_70,strp/goblin_slayer_avatar_2_by_shadowskyexe_dakrfjg-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9OTg3IiwicGF0aCI6IlwvZlwvZDliMWY4ZjEtYTNlYy00MzJkLThlNWUtOTE3OTNiZDM3Y2M0XC9kYWtyZmpnLTkwYjkzZjFiLTNlNWUtNDc2My05ZTdlLWY3YjNiYjYzYTM5Ny5qcGciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.BoC8klMcCPHqaZatT7mVnvykidrNKnxwvUSG80nsrp4",
-      date: "11 Mar 2018"
     },
   ]
 
-
-class CreateWeebtoonScreen extends Component {
+class CreateChapterScreen extends Component {
 
   static navigationOptions = ({navigation}) => ({
     headerRight: (
@@ -37,20 +30,20 @@ class CreateWeebtoonScreen extends Component {
   })
   
   renderFav = ({itm}) => (
-    <TouchableWithoutFeedback onPress={() => alert("oke")}>
-      <View key={itm.id} style={styles.listChapter}>
-        <View style={styles.coverFrame}>
-          <Image 
-            source={{uri: itm.item.chapImg}} 
-            style={styles.listCover}
-          />
-        </View>
-        <View style={styles.descBox}>
-          <Text style={styles.chapTitle}>Chapter {itm.item.chapter}</Text>
-          <Text style={styles.chapCount}>{itm.item.date}</Text>
-        </View>
+    <View key={itm.id} style={styles.listChapter}>
+      <View style={styles.coverFrame}>
+        <Image 
+          source={{uri: itm.item.chapImg}} 
+          style={styles.listCover}
+        />
       </View>
-    </TouchableWithoutFeedback>
+      <View style={styles.descBox}>
+        <Text style={styles.chapTitle}>{itm.item.fileName}</Text>
+        <TouchableOpacity style={styles.delBtn}>
+          <Text style={styles.delBtnText}>Delete</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
   )
   
   render() {
@@ -59,17 +52,17 @@ class CreateWeebtoonScreen extends Component {
         
         <ScrollView contentContainerStyle={styles.containerScroll}>
           <View style={styles.formContainer}>
-            <Text style={styles.titleText}>Title</Text>
+            <Text style={styles.titleText}>Name</Text>
             <View style={styles.boxInput}>
               <TextInput 
-                placeholder="Title of series"
+                placeholder="Name of image"
                 style={styles.input}
               />
             </View>
           </View>
 
           <View style={styles.chapterContainer}>
-            <Text style={styles.titleText}>Chapters</Text>
+            <Text style={styles.titleText}>Add Images</Text>
             <FlatList 
               data={data}
               contentContainerStyle={styles.listContainer}
@@ -78,14 +71,29 @@ class CreateWeebtoonScreen extends Component {
             />
           </View>
           
-          <TouchableOpacity style={styles.addBtn} onPress={() => this.props.navigation.navigate("CreateChapter")}>
+          <TouchableOpacity style={styles.addBtn} onPress={this._handleAddImage}>
             <Fa name="plus" size={18} color={colors.white} />
-            <Text style={styles.btnText}>Add Episode</Text>
+            <Text style={styles.btnText}>Image</Text>
           </TouchableOpacity>
         </ScrollView>
       </View>
     )
   }
+
+  _handleAddImage = () => {
+    const options = {
+      title: "Choose image chapter",
+      storageOptions: {
+        skipBackup: true
+      }
+    }
+
+    ImagePicker.launchImageLibrary(options, (response) => {
+      // Same code as in above section!
+      if(!response.error && !response.didCancel ) 
+        alert("Mantab")
+    });
+  }
 }
 
-export default CreateWeebtoonScreen
+export default CreateChapterScreen
