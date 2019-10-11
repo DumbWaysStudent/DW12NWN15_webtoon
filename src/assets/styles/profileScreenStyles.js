@@ -67,6 +67,7 @@ export default styles = StyleSheet.create({
   },
   boxInput: {
     borderWidth: 2,
+    borderRadius: 4,
     borderColor: colors.gray,
     minWidth: "100%"
   },
