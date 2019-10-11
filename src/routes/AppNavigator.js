@@ -17,6 +17,7 @@ import EditProfileScreen from "../screens/EditProfileScreen"
 import MyWeebtoonScreen from "../screens/MyWeebtoonScreen"
 import CreateWeebtoonScreen from "../screens/CreateWeebtoonScreen"
 import CreateChapterScreen from "../screens/CreateChapterScreen"
+import EditWeebtoonScreen from "../screens/EditWeebtoonScreen"
 
 const AuthStack = createStackNavigator({
   Login: { screen: LoginScreen, navigationOptions: { header: null } }
@@ -104,6 +105,7 @@ const ContentStack = createStackNavigator(
     MyWeebtoon: {screen: MyWeebtoonScreen, navigationOptions: {title: "My Weebtoon"}},
     CreateWeebtoon: {screen: CreateWeebtoonScreen, navigationOptions: {title: "Create Weebtoon"}},
     CreateChapter: {screen: CreateChapterScreen, navigationOptions: {title: "Create Chapter"}},
+    EditWeebtoon: {screen: EditWeebtoonScreen, navigationOptions: {title: "Edit Weebtoon"}},
 },
   {
     initialRouteName: "ForYou",

@@ -3,32 +3,41 @@ import { View, TextInput, TouchableWithoutFeedback, Image, Text, FlatList, Touch
 import Fa from "react-native-vector-icons/FontAwesome5"
 
 import colors from "../assets/colors"
-import styles from "../assets/styles/myWeebtoonScreenStyle"
+import styles from "../assets/styles/createWeebtoonScreenStyle"
+import { ScrollView } from "react-native-gesture-handler"
 
 const data = [
     {
-      id: "MY01",
-      title: "Overlord",
+      id: "EP01",
+      chapter: "1",
       chapImg: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/d9b1f8f1-a3ec-432d-8e5e-91793bd37cc4/dakrfjg-90b93f1b-3e5e-4763-9e7e-f7b3bb63a397.jpg/v1/fill/w_911,h_878,q_70,strp/goblin_slayer_avatar_2_by_shadowskyexe_dakrfjg-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9OTg3IiwicGF0aCI6IlwvZlwvZDliMWY4ZjEtYTNlYy00MzJkLThlNWUtOTE3OTNiZDM3Y2M0XC9kYWtyZmpnLTkwYjkzZjFiLTNlNWUtNDc2My05ZTdlLWY3YjNiYjYzYTM5Ny5qcGciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.BoC8klMcCPHqaZatT7mVnvykidrNKnxwvUSG80nsrp4",
-      chapCount: "15"
+      date: "17 Jan 2018"
     }, {
-      id: "MY02",
-      title: "Goblin Slayer",
+      id: "EP02",
+      chapter: "2",
       chapImg: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/d9b1f8f1-a3ec-432d-8e5e-91793bd37cc4/dakrfjg-90b93f1b-3e5e-4763-9e7e-f7b3bb63a397.jpg/v1/fill/w_911,h_878,q_70,strp/goblin_slayer_avatar_2_by_shadowskyexe_dakrfjg-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9OTg3IiwicGF0aCI6IlwvZlwvZDliMWY4ZjEtYTNlYy00MzJkLThlNWUtOTE3OTNiZDM3Y2M0XC9kYWtyZmpnLTkwYjkzZjFiLTNlNWUtNDc2My05ZTdlLWY3YjNiYjYzYTM5Ny5qcGciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.BoC8klMcCPHqaZatT7mVnvykidrNKnxwvUSG80nsrp4",
-      chapCount: "32"
+      date: "25 Feb 2018"
     }, {
-      id: "MY03",
-      title: "Uchi no ko",
+      id: "EP03",
+      chapter: "3",
       chapImg: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/d9b1f8f1-a3ec-432d-8e5e-91793bd37cc4/dakrfjg-90b93f1b-3e5e-4763-9e7e-f7b3bb63a397.jpg/v1/fill/w_911,h_878,q_70,strp/goblin_slayer_avatar_2_by_shadowskyexe_dakrfjg-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9OTg3IiwicGF0aCI6IlwvZlwvZDliMWY4ZjEtYTNlYy00MzJkLThlNWUtOTE3OTNiZDM3Y2M0XC9kYWtyZmpnLTkwYjkzZjFiLTNlNWUtNDc2My05ZTdlLWY3YjNiYjYzYTM5Ny5qcGciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.BoC8klMcCPHqaZatT7mVnvykidrNKnxwvUSG80nsrp4",
-      chapCount: "22"
-    }
+      date: "11 Mar 2018"
+    },
   ]
 
 
-class MyWeebtoonScreen extends Component {
+class EditWeebtoonScreen extends Component {
 
+  static navigationOptions = ({navigation}) => ({
+    headerRight: (
+      <TouchableOpacity onPress={() => {navigation.goBack()}}>
+        <Fa name="check" size={18} color={colors.white} />
+      </TouchableOpacity>
+    )
+  })
+  
   renderFav = ({itm}) => (
-    <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("EditWeebtoon", {title: itm.item.title})}>
+    <TouchableWithoutFeedback onPress={() => alert("oke")}>
       <View key={itm.id} style={styles.listChapter}>
         <View style={styles.coverFrame}>
           <Image 
@@ -37,8 +46,8 @@ class MyWeebtoonScreen extends Component {
           />
         </View>
         <View style={styles.descBox}>
-          <Text style={styles.chapTitle}>{itm.item.title}</Text>
-          <Text style={styles.chapCount}>{itm.item.chapCount} Chapter(s)</Text>
+          <Text style={styles.chapTitle}>Chapter {itm.item.chapter}</Text>
+          <Text style={styles.chapCount}>{itm.item.date}</Text>
         </View>
       </View>
     </TouchableWithoutFeedback>
@@ -47,19 +56,39 @@ class MyWeebtoonScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <FlatList 
-          data={data}
-          contentContainerStyle={styles.listContainer}
-          renderItem={itm => this.renderFav({itm})}
-          keyExtractor={itm => itm.id}
-        />
+        
+        <ScrollView contentContainerStyle={styles.containerScroll}>
+          <View style={styles.formContainer}>
+            <Text style={styles.titleText}>Title</Text>
+            <View style={styles.boxInput}>
+              <TextInput 
+                placeholder="Title of series"
+                style={styles.input}
+              />
+            </View>
+          </View>
 
-        <TouchableOpacity style={styles.addBtn} onPress={() => this.props.navigation.navigate("CreateWeebtoon")}>
-          <Fa name="plus" size={32} color={colors.white} />
-        </TouchableOpacity>
+          <View style={styles.chapterContainer}>
+            <Text style={styles.titleText}>Chapters</Text>
+            <FlatList 
+              data={data}
+              contentContainerStyle={styles.listContainer}
+              renderItem={itm => this.renderFav({itm})}
+              keyExtractor={itm => itm.id}
+            />
+          </View>
+          
+          <TouchableOpacity style={styles.addBtn} onPress={() => this.props.navigation.navigate("CreateChapter")}>
+            <Fa name="plus" size={18} color={colors.white} />
+            <Text style={styles.btnText}>Add Episode</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.delBtn} onPress={() => alert("Wow, wow, wow, santuy dong")}>
+            <Text style={styles.btnText}>Delete Series</Text>
+          </TouchableOpacity>
+        </ScrollView>
       </View>
     )
   }
 }
 
-export default MyWeebtoonScreen
+export default EditWeebtoonScreen
