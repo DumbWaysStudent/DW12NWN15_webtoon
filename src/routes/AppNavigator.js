@@ -137,7 +137,7 @@ export default createAppContainer(
       Content: ContentStack
     },
     {
-      initialRouteName: "Content"
+      initialRouteName: "Auth"
     }
   )
 )
