@@ -11,10 +11,8 @@ class LoginScreen extends Component {
   constructor() {
     super()
     this.state = {
-      data: {
-        mail: "rao@mail.in",
-        pass: "oke"
-      },
+      token: null,
+      userID: null,
       iMail: "",
       iPass: "",
       isEmail: {
@@ -113,44 +111,44 @@ class LoginScreen extends Component {
     
   }
 
-  _handleLogin = () => {
+  _handleLogin = async () => {
     const { iMail, iPass } = this.state
 
     this.setState({isLoading: true})
 
-    if(this.isValidate) {
-      console.log('oke')
-    } else {
-      console.log('anjirr')
+    try{
+      await axios.post(config.host.concat('login'), {email: iMail, password: iPass})
+      .then((response) => {
+        if (typeof response.data.token !== 'undefined'){
+          this.setState({token: response.data.token})
+          this.setState({userID : response.data.user.id})
+          this.setitem
+          console.log(response.data.user.id)
+          this.props.navigation.navigate('ForYou')
+        }else{
+          alert('Email/Password is wrong')
+        }
+      })
+      .catch((error)=>{
+        alert(error)
+      })
     }
-
-    // setTimeout(() => {
-    //   if(this._isValidate()) {
-    //     if((iMail == data.mail) && (iPass == data.pass)) {
-    //       this.props.navigation.navigate("Content")
-    //     }
-  
-    //     if((iMail !== data.mail) || (iPass !== data.pass)) {
-    //       this.setState({
-    //         isEmail: {
-    //           status: true,
-    //           err: "Wrong E-mail or Password"
-    //         },
-    //         isPass: {
-    //           status: true,
-    //           err: "Wrong E-mail or Password"
-    //         }
-    //       })
-    //     }
-    //   }
-    //   this.setState({isLoading: false})
-    // }, 1500)
+    catch (e){
+      console.log(e)
+    } finally {
+      this.setState({isLoading: false})
+    }
   }
 
   _showPassword = () => {
     this.setState({
       showPassword: !this.state.showPassword
     })
+  }
+
+  setItem = async () => {
+    await AsyncStorage.setItem('userToken', this.state.token)
+    await AsyncStorage.setItem('userID',JSON.stringify(this.state.userID))
   }
 
   async isValidate() {
@@ -166,7 +164,7 @@ class LoginScreen extends Component {
       }
     })
     .catch(function (error) {
-      console.log(error);
+      console.log(error)
     })
 
     return false
