@@ -7,7 +7,7 @@ import axios from "axios"
 import AsyncStorage from "@react-native-community/async-storage"
 import config from "../configs/config"
 
-class LoginScreen extends Component {
+class RegisterScreen extends Component {
   constructor() {
     super()
     this.state = {
@@ -34,18 +34,13 @@ class LoginScreen extends Component {
     return(
       <View style={styles.container}>
         <StatusBar backgroundColor={colors.prime} barStyle="light-content" />
-        
-        <TouchableOpacity style={styles.backBtn} onPress={() => this.props.navigation.navigate('ForYou')}>
-          <Fa name="arrow-left" style={styles.backIcon} size={28}/>
-          <Text style={styles.backText}>Back to manga</Text>
-        </TouchableOpacity>
 
         <View style={styles.title}>
           <Image 
             style={styles.logo}
             source={require("../assets/images/logo.png")}
           />
-          <Text style={styles.titleSub}>Login with your WEEBTOON</Text>
+          <Text style={styles.titleSub}>Be weebtoon family by registering</Text>
         </View>
 
         <View style={styles.loginCard}>
@@ -107,13 +102,9 @@ class LoginScreen extends Component {
               onPress={this._handleLogin} 
               disabled={this.state.btnDisabled}
             >
-              <Text style={styles.loginBtnText}>Log In</Text>
+              <Text style={styles.loginBtnText}>Register</Text>
             </TouchableOpacity>
           )}
-
-          <TouchableOpacity style={styles.registerBtn} onPress={() => this.props.navigation.navigate('Register')}>
-            <Text style={styles.registerText}>Don't have an account? click here</Text>
-          </TouchableOpacity>
         </View>
       </View>
     )
@@ -126,11 +117,11 @@ class LoginScreen extends Component {
     this.setState({isLoading: true})
 
     try{
-      await axios.post(config.host.concat('login'), {email: iMail, password: iPass})
+      await axios.post(config.host.concat('register'), {email: iMail, password: iPass})
       .then((response) => {
         if (typeof response.data.token !== 'undefined'){
           if(response.data.error) {
-            alert('Email/Password is wrong')
+            alert(response.data.message)
           } else {
             this.setState({token: response.token})
             this.setState({userID : response.data.id})
@@ -138,7 +129,7 @@ class LoginScreen extends Component {
             this.props.navigation.navigate('ForYou')
           }
         }else{
-          alert('Email/Password is wrong')
+          alert('Whoops, something went wrong')
         }
       })
       .catch((error)=>{
@@ -161,25 +152,6 @@ class LoginScreen extends Component {
   setItem = async () => {
     await AsyncStorage.setItem('userToken', this.state.token)
     await AsyncStorage.setItem('userID',JSON.stringify(this.state.userID))
-  }
-
-  async isValidate() {
-    axios.post(config.host.concat('login'), {
-      email: "teto@kasadne.in",
-      password: "lovemeforesva"
-    })
-    .then(function (response) {
-      if(response.data.error) {
-        return false
-      } else {
-        return true
-      }
-    })
-    .catch(function (error) {
-      console.log(error)
-    })
-
-    return false
   }
 
   _validateEmail = val => {
@@ -222,4 +194,4 @@ class LoginScreen extends Component {
   }
 }
 
-export default LoginScreen
+export default RegisterScreen
