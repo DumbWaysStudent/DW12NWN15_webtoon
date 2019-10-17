@@ -39,7 +39,7 @@ class EditChapterScreen extends Component {
       </View>
       <View style={styles.descBox}>
         <Text style={styles.chapTitle}>{itm.item.fileName}</Text>
-        <TouchableOpacity style={styles.delBtnSm}>
+        <TouchableOpacity style={styles.delBtnSm} onPress={() => alert("Wow, wow, wow santuy dong")}>
           <Text style={styles.delBtnTextSm}>Delete</Text>
         </TouchableOpacity>
       </View>
@@ -55,7 +55,7 @@ class EditChapterScreen extends Component {
             <Text style={styles.titleText}>Name</Text>
             <View style={styles.boxInput}>
               <TextInput 
-                placeholder="Name of image"
+                placeholder="Name of chapter"
                 style={styles.input}
               />
             </View>
@@ -75,7 +75,7 @@ class EditChapterScreen extends Component {
             <Fa name="plus" size={18} color={colors.white} />
             <Text style={styles.btnText}>Image</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.delBtn} onPress={this._handleAddImage}>
+          <TouchableOpacity style={styles.delBtn} onPress={() => alert("Wow, wow, wow santuy dong")}>
             <Text style={styles.btnText}>Delete Chapter</Text>
           </TouchableOpacity>
         </ScrollView>

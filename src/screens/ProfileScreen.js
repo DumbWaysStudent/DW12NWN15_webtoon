@@ -24,13 +24,13 @@ class ProfileScreen extends Component {
         </View>
 
         <View style={styles.actionBars}>
-          <TouchableOpacity style={[styles.actionPanel, {borderBottomWidth: 0}]} onPress={() => this.props.navigation.navigate("MyWeebtoon")}>
+          <TouchableOpacity style={[styles.actionPanel, {borderBottomWidth: .5}]} onPress={() => this.props.navigation.navigate("MyWeebtoon")}>
             <View style={styles.actionBtn}>
               <Text style={styles.actionText}>My Webtoon Creation</Text>
               <Fa name="chevron-right" size={22} />
             </View>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => this.props.navigation.navigate("Auth")} style={styles.actionPanel}>
+          <TouchableOpacity onPress={() => this.props.navigation.navigate("Auth")} style={[styles.actionPanel, {borderTopWidth: .5}]}>
             <View style={styles.actionBtn}>
               <Text style={styles.actionText}>Log Out</Text>
             </View>

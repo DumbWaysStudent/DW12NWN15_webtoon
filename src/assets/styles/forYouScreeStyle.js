@@ -1,6 +1,7 @@
 import { StyleSheet } from "react-native"
 import colors from "../colors"
 import fonts from "../fonts"
+import { hidden } from "colorette"
 
 export default styles = StyleSheet.create({
   container: {
@@ -42,33 +43,9 @@ export default styles = StyleSheet.create({
   caroselItem: {
     position: "relative"
   },
-  carouselImgFilter: {
-    position: "absolute", 
-    width: "100%", 
-    height: "100%", 
-    backgroundColor: "#00000022", 
-    alignItems: "center", 
-    justifyContent: "flex-end"
-  },
-  caroselTitle: {
-    color: colors.white,
-    fontFamily: fonts.raleway.semiBold,
-    letterSpacing: 2,
-    fontSize: 28,
-    marginBottom: "10%",
-    textTransform: "uppercase",
-    textShadowColor: "#000",
-    textShadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    textShadowRadius: 1.41,
-    elevation: 2,
-  },
-
   favBox: {
     marginTop: 10,
-    paddingLeft: 20
+    // paddingLeft: 20
   },
   boxTitle: {
     fontFamily: fonts.quicksand.normal,
@@ -84,9 +61,10 @@ export default styles = StyleSheet.create({
   },
   favList: {
     alignItems: "center",
-    marginRight: 15,
+    marginHorizontal: 5,
     paddingBottom: 5,
     borderRadius: 4,
+    overflow: "hidden",
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -102,6 +80,9 @@ export default styles = StyleSheet.create({
     width: 125,
     borderTopLeftRadius: 4,
     borderTopRightRadius: 4
+  },
+  favTitleBox: {
+    overflow: "hidden"
   },
   favTitle: {
     fontSize: 16,
@@ -139,8 +120,9 @@ export default styles = StyleSheet.create({
     paddingVertical: 10,
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: "center",
     borderRadius: 5,
-    width: 150,
+    minWidth: 50,
   },
   contentBtnText: {
     fontSize: 18,

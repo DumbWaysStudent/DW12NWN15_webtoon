@@ -52,7 +52,7 @@ const AdminStack = createStackNavigator(
 const AppStack = createBottomTabNavigator(
   {
     ForYou: {screen: ForYouScreen, navigationOptions: {title: "For You"}},
-    Favourite: {screen: FavouriteScreen, navigationOptions: {title: "Favourite"}},
+    Favourite: {screen: FavouriteScreen, navigationOptions: {title: "Favorites"}},
     Profile: {screen: AdminStack, navigationOptions: {title: "My Profile"}}
   },
   {

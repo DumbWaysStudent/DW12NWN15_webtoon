@@ -3,6 +3,9 @@ import { ActivityIndicator, View, Text, Image, TextInput, TouchableOpacity, Stat
 import Fa from "react-native-vector-icons/FontAwesome5"
 import colors from "../assets/colors"
 import styles from "../assets/styles/loginScreenStyle"
+import axios from "axios"
+import AsyncStorage from "@react-native-community/async-storage"
+import config from "../configs/config"
 
 class LoginScreen extends Component {
   constructor() {
@@ -51,6 +54,7 @@ class LoginScreen extends Component {
                 <TextInput 
                   style={[styles.input, isEmail.status && styles.inputErr]} 
                   onChangeText={val => this._validateEmail(val)}
+                  editable={!this.state.isLoading}
                   placeholder="Your mail.."
                   placeholderTextColor={isEmail.status ? colors.white : colors.gray} 
                   autoCapitalize="none"
@@ -70,13 +74,14 @@ class LoginScreen extends Component {
                 <TextInput 
                   style={[styles.input, isPass.status && styles.inputErr]} 
                   placeholder="Your Password.."
+                  editable={!this.state.isLoading}
                   placeholderTextColor={isPass.status ? colors.white : colors.gray} 
                   autoCapitalize="none"
                   onChangeText={val => this._validatePass(val)}
                   secureTextEntry={!showPassword}
                   value={this.state.iPass}
                 />
-                <TouchableOpacity style={styles.eyeIcon} onPress={this._showPassword}>
+                <TouchableOpacity style={styles.eyeIcon} onPress={this._showPassword} disabled={!this.state.isLoading}>
                   <Fa name={ showPassword ? "eye-slash" : "eye"} size={22} style={styles.eyeBtn} color={isPass.status ? colors.white : colors.black} />
                 </TouchableOpacity>
               </View>
@@ -109,35 +114,37 @@ class LoginScreen extends Component {
   }
 
   _handleLogin = () => {
-    const { iMail, iPass, data, isLoading } = this.state
+    const { iMail, iPass } = this.state
+
     this.setState({isLoading: true})
 
-    setTimeout(() => {
-      if(this._isValidate()) {
-        if((iMail == data.mail) && (iPass == data.pass)) {
-          this.props.navigation.navigate("Content")
-        }
+    if(this.isValidate) {
+      console.log('oke')
+    } else {
+      console.log('anjirr')
+    }
+
+    // setTimeout(() => {
+    //   if(this._isValidate()) {
+    //     if((iMail == data.mail) && (iPass == data.pass)) {
+    //       this.props.navigation.navigate("Content")
+    //     }
   
-        if(iMail !== data.mail) {
-          this.setState({
-            isEmail: {
-              status: true,
-              err: "Wrong e-mail"
-            }
-          })
-        }
-  
-        if(iPass !== data.pass) {
-          this.setState({
-            isPass: {
-              status: true,
-              err: "Wrong password"
-            }
-          })
-        }
-      }
-      this.setState({isLoading: false})
-    }, 1500)
+    //     if((iMail !== data.mail) || (iPass !== data.pass)) {
+    //       this.setState({
+    //         isEmail: {
+    //           status: true,
+    //           err: "Wrong E-mail or Password"
+    //         },
+    //         isPass: {
+    //           status: true,
+    //           err: "Wrong E-mail or Password"
+    //         }
+    //       })
+    //     }
+    //   }
+    //   this.setState({isLoading: false})
+    // }, 1500)
   }
 
   _showPassword = () => {
@@ -146,10 +153,23 @@ class LoginScreen extends Component {
     })
   }
 
-  _isValidate = () => {
-    const { iMail, iPass } = this.state
+  async isValidate() {
+    axios.post(config.host.concat('login'), {
+      email: "teto@kasadne.in",
+      password: "lovemeforesva"
+    })
+    .then(function (response) {
+      if(response.data.error) {
+        return false
+      } else {
+        return true
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
 
-    if(iMail && iPass !=="") return true
+    return false
   }
 
   _validateEmail = val => {
@@ -157,39 +177,17 @@ class LoginScreen extends Component {
     this.setState({iMail: val})
     
     if(!validateMail.test(String(val).toLowerCase())) {
-      if(val === "") {
-        this.setState({
-          isEmail: {
-            status: true,
-            err: "E-mail is required"
-          },
-          btnDisabled: true
-        })
-      } else {
-        this.setState({
-          isEmail: {
-            status: true,
-            err: "E-mail is not valid"
-          },
-          btnDisabled: true
-        })
-      }
+      this.setState({
+        btnDisabled: true
+      })
     } else {
       this.setState({
         isEmail: {
           status: false,
           err: ""
         },
+        btnDisabled: false
       })
-      if(this.state.isPass.status) {
-        this.setState({
-          btnDisabled: true
-        })
-      } else {
-        this.setState({
-          btnDisabled: false
-        })
-      }
     }
   }
 
@@ -210,15 +208,6 @@ class LoginScreen extends Component {
           err: ""
         }
       })
-      if(this.state.isEmail.status) {
-        this.setState({
-          btnDisabled: true
-        })
-      } else {
-        this.setState({
-          btnDisabled: false
-        })
-      }
     }
   }
 }
