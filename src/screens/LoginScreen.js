@@ -4,6 +4,8 @@ import Fa from "react-native-vector-icons/FontAwesome5"
 import colors from "../assets/colors"
 import styles from "../assets/styles/loginScreenStyle"
 import axios from "axios"
+import AsyncStorage from "@react-native-community/async-storage"
+import config from "../configs/config"
 
 class LoginScreen extends Component {
   constructor() {
@@ -112,15 +114,15 @@ class LoginScreen extends Component {
   }
 
   _handleLogin = () => {
+    const { iMail, iPass } = this.state
+
     this.setState({isLoading: true})
-    
-    if(this.isValidate()) {
-      this.setState({isLoading: false})
-      alert('mantab')
+
+    if(this.isValidate) {
+      console.log('oke')
     } else {
-      this.setState({isLoading: false})
-      alert('anjirr')
-  }
+      console.log('anjirr')
+    }
 
     // setTimeout(() => {
     //   if(this._isValidate()) {
@@ -151,25 +153,23 @@ class LoginScreen extends Component {
     })
   }
 
-  isValidate = () => {
-    const { iMail, iPass } = this.state
-
-    // if(iMail && iPass !=="") return true_validate
-    axios.post('http://192.168.1.22:3000/api/v1/login', {
-      email: iMail,
-      password: iPass
+  async isValidate() {
+    axios.post(config.host.concat('login'), {
+      email: "teto@kasadne.in",
+      password: "lovemeforesva"
     })
     .then(function (response) {
       if(response.data.error) {
         return false
+      } else {
+        return true
       }
-      
-      console.log(response)
-      return true
     })
     .catch(function (error) {
       console.log(error);
     })
+
+    return false
   }
 
   _validateEmail = val => {
