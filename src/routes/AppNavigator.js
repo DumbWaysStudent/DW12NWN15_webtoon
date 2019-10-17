@@ -52,7 +52,7 @@ const AdminStack = createStackNavigator(
 const AppStack = createBottomTabNavigator(
   {
     ForYou: {screen: ForYouScreen, navigationOptions: {title: "For You"}},
-    Favourite: {screen: FavouriteScreen, navigationOptions: {title: "Favorites"}},
+    Favourite: {screen: FavouriteScreen, navigationOptions: {title: "Favourite"}},
     Profile: {screen: AdminStack, navigationOptions: {title: "My Profile"}}
   },
   {
@@ -137,7 +137,7 @@ export default createAppContainer(
       Content: ContentStack
     },
     {
-      initialRouteName: "Content"
+      initialRouteName: "Auth"
     }
   )
 )
