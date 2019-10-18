@@ -7,8 +7,6 @@ import axios from "axios"
 import AsyncStorage from "@react-native-community/async-storage"
 import config from "../configs/config"
 
-import config from "../configs/config"
-
 class LoginScreen extends Component {
   constructor() {
     super()
