@@ -6,7 +6,7 @@ import Fa from "react-native-vector-icons/FontAwesome5"
 import colors from "../assets/colors"
 import styles from "../assets/styles/forYouScreeStyle"
 
-import config from "../config/config" 
+import config from "../configs/config" 
 
 const bannerWidth = Dimensions.get("window").width
 const bannerHeight = 200

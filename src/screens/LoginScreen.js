@@ -5,6 +5,8 @@ import colors from "../assets/colors"
 import styles from "../assets/styles/loginScreenStyle"
 import axios from "axios"
 
+import config from "../configs/config"
+
 class LoginScreen extends Component {
   constructor() {
     super()
