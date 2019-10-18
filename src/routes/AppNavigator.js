@@ -19,9 +19,11 @@ import CreateWeebtoonScreen from "../screens/CreateWeebtoonScreen"
 import CreateChapterScreen from "../screens/CreateChapterScreen"
 import EditWeebtoonScreen from "../screens/EditWeebtoonScreen"
 import EditChapterScreen from "../screens/EditChapterScreen"
+import RegisterScreen from "../screens/RegisterScreen"
 
 const AuthStack = createStackNavigator({
-  Login: { screen: LoginScreen, navigationOptions: { header: null } }
+  Login: { screen: LoginScreen, navigationOptions: { header: null } },
+  Register: { screen: RegisterScreen, navigationOptions: { header: null } }
 })
 
 const AdminStack = createStackNavigator(
